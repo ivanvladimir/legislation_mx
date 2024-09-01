@@ -262,6 +262,7 @@ def fill_subject(
 @click.option(
     "--save_into_db/--dont_save_into_db", default=True, help="Save the info into the db"
 )
+@click.option("--verbose", is_flag=True)
 @click.pass_context
 def query(
     ctx,
@@ -322,7 +323,7 @@ def query(
 
         # Click on search
         with page.expect_popup() as popup_info:
-            page.click('input[type="image"][value="Continuar"]')
+            page.click('button[value="Buscar"]')
 
         # Obtain first result page
         first_page = popup_info.value
